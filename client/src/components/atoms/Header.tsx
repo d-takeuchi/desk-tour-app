@@ -47,6 +47,14 @@ export const Header: VFC = () => {
             >
               新規登録
             </Link>
+
+            <Link to="/users/profile/1" className="block relative">
+              <img
+                alt="profile"
+                src="/images/person/1.jpg"
+                className="mx-auto object-cover rounded-full h-16 w-16 "
+              />
+            </Link>
           </div>
         </div>
       </div>

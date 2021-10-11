@@ -32,9 +32,15 @@ const Home = () => {
           </div>
 
           <div className="flex flex-wrap mb-12 text-left">
-            <PostCard />
-            <PostCard />
-            <PostCard />
+            <div className="w-full p-6 mx-auto lg:w-1/3">
+              <PostCard />
+            </div>
+            <div className="w-full p-6 mx-auto lg:w-1/3">
+              <PostCard />
+            </div>
+            <div className="w-full p-6 mx-auto lg:w-1/3">
+              <PostCard />
+            </div>
           </div>
         </div>
       </section>
