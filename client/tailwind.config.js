@@ -1,4 +1,5 @@
 const colors = require("tailwindcss/colors");
+const plugin = require("tailwindcss/plugin");
 module.exports = {
   purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
   darkMode: false, // or 'media' or 'class'
@@ -47,7 +48,26 @@ module.exports = {
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      backgroundColor: ["checked", "label-checked"],
+      borderColor: ["checked"],
+      inset: ["checked"],
+      zIndex: ["hover", "active"],
+    },
   },
-  plugins: [],
+  plugins: [
+    require("@tailwindcss/forms"),
+    plugin(({ addVariant, e }) => {
+      addVariant("label-checked", ({ modifySelectors, separator }) => {
+        modifySelectors(({ className }) => {
+          const eClassName = e(`label-checked${separator}${className}`); // escape class
+          const yourSelector = 'input[type="checkbox"]'; // your input selector. Could be any
+          return `${yourSelector}:checked ~ .${eClassName}`; // ~ - CSS selector for siblings
+        });
+      });
+    }),
+  ],
+  future: {
+    purgeLayersByDefault: true,
+  },
 };

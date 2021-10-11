@@ -1,4 +1,5 @@
 import React from "react";
+import PostCard from "../organisms/PostCard";
 
 const Home = () => {
   return (
@@ -31,39 +32,9 @@ const Home = () => {
           </div>
 
           <div className="flex flex-wrap mb-12 text-left">
-            <div className="w-full p-4 mx-auto lg:w-1/3">
-              <div className="p-4 lg:p-8 rounded-xl bg-gray-200">
-                <div className="inline-flex items-center justify-center flex-shrink-0 w-12 h-12 mx-auto mb-5 text-black bg-blueGray-100 rounded-full"></div>
-                <h3 className="mx-auto mb-8 text-2xl font-semibold leading-none tracking-tighter text-black lg:text-3xl title-font">
-                  デスクタイトル1
-                </h3>
-                <p className="mx-auto text-base font-medium leading-relaxed text-blueGray-700 ">
-                  hogehoge
-                </p>
-              </div>
-            </div>
-            <div className="w-full p-4 mx-auto lg:w-1/3">
-              <div className="p-4 lg:p-8 rounded-xl bg-gray-200">
-                <div className="inline-flex items-center justify-center flex-shrink-0 w-12 h-12 mx-auto mb-5 text-black bg-blueGray-100 rounded-full"></div>
-                <h3 className="mx-auto mb-8 text-2xl font-semibold leading-none tracking-tighter text-black lg:text-3xl title-font">
-                  デスクタイトル2
-                </h3>
-                <p className="mx-auto text-base font-medium leading-relaxed text-blueGray-700 ">
-                  hogehoge
-                </p>
-              </div>
-            </div>
-            <div className="w-full p-4 mx-auto lg:w-1/3">
-              <div className="p-4 lg:p-8 rounded-xl bg-gray-200">
-                <div className="inline-flex items-center justify-center flex-shrink-0 w-12 h-12 mx-auto mb-5 text-black bg-blueGray-100 rounded-full"></div>
-                <h3 className="mx-auto mb-8 text-2xl font-semibold leading-none tracking-tighter text-black lg:text-3xl title-font">
-                  デスクタイトル3
-                </h3>
-                <p className="mx-auto text-base font-medium leading-relaxed text-blueGray-700 ">
-                  hogehoge
-                </p>
-              </div>
-            </div>
+            <PostCard />
+            <PostCard />
+            <PostCard />
           </div>
         </div>
       </section>
