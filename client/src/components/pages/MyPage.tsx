@@ -4,9 +4,9 @@ import PostCard from "../organisms/PostCard";
 
 const MyPage = () => {
   return (
-    <div className="flex-grow">
+    <div className="flex-grow bg-primary">
       <div className="flex flex-wrap items-center justify-center">
-        <div className="w-full bg-white shadow-lg transform duration-200 easy-in-out">
+        <div className="w-full bg-white shadow-lg transform duration-200 easy-in-out bg-primary">
           <div className="h-32 overflow-hidden"></div>
           <div className="h-32 flex justify-center px-5  -mt-12">
             <img
@@ -16,11 +16,11 @@ const MyPage = () => {
             />
           </div>
           <div>
-            <div className="text-center px-14">
-              <Link to="/users/profile/edit/1">
-                <h2 className="text-gray-800 text-3xl font-bold">hogehoge</h2>
+            <div className="text-center px-14 ">
+              <h2 className="text-white text-3xl font-bold mb-2">hogehoge</h2>
+              <Link to="/users/profile/edit/1" className="text-white">
+                プロフィール編集
               </Link>
-              <p className="text-gray-400 mt-2">@hogehoge</p>
             </div>
             {/* <hr className="mt-6" /> */}
             <div className="mx-auto w-full sm:w-2/3 flex bg-gray-100 mt-6">

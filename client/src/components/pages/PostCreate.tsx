@@ -2,13 +2,13 @@ import React, { VFC } from "react";
 
 const PostCreate: VFC = () => {
   return (
-    <div className="flex-grow container items-center px-5 py-8 mx-auto lg:px-24 mt-10">
-      <h1 className="px-5">新規投稿</h1>
-      <div className="md:grid md:grid-cols-3 md:gap-6">
-        <div className="mt-5 md:mt-0 md:col-span-3">
-          <form action="#" method="POST">
+    <div className="flex-grow bg-primary">
+      <div className="container items-center px-5 pb-8 mx-auto lg:px-24 mt-10">
+        <h1 className="text-2xl text-white mb-5">新規投稿</h1>
+        <div className="md:grid md:grid-cols-3 md:gap-6">
+          <div className="mt-5 md:mt-0 md:col-span-3">
             <div className="shadow sm:rounded-md sm:overflow-hidden">
-              <div className="px-4 py-5 bg-white space-y-6 sm:p-6 mx-5">
+              <div className="px-4 py-5 bg-white space-y-6 sm:p-6 ">
                 <div className="grid grid-cols-3 gap-6">
                   <div className="col-span-3 sm:col-span-2">
                     <label className="block text-sm font-medium text-gray-700">
@@ -116,13 +116,13 @@ const PostCreate: VFC = () => {
               <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
                 <button
                   type="submit"
-                  className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primaryButton hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
                   投稿
                 </button>
               </div>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>

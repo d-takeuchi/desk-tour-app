@@ -2,7 +2,7 @@ import React, { VFC } from "react";
 
 const Login: VFC = () => {
   return (
-    <section className="flex-grow flex text-blueGray-700 justify-center">
+    <section className="flex-grow flex text-blueGray-700 justify-center bg-primary">
       <div className="container items-center px-5 py-12 lg:px-20">
         <div className="flex flex-col w-full p-10 mx-auto my-6 transition duration-500 ease-in-out transform bg-white border rounded-lg lg:w-2/6 md:w-1/2 md:mt-0">
           <h1 className="text-center">ログイン</h1>
@@ -35,7 +35,7 @@ const Login: VFC = () => {
             />
           </div>
           <div className="mt-10">
-            <button className="w-full px-16 py-2 my-2 mr-2 text-base text-white transition duration-500 ease-in-out transform bg-blue-600 border-blue-600 rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-blue-800 ">
+            <button className="w-full px-16 py-2 my-2 mr-2 text-base text-white transition duration-500 ease-in-out transform bg-primaryButton border-blue-600 rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-gray-200 ">
               ログイン
             </button>
           </div>
@@ -45,7 +45,7 @@ const Login: VFC = () => {
           <div className="flex justify-enter\ flex-col">
             <button
               type="button"
-              className="inline-flex w-full px-4 py-3 font-semibold text-black transition duration-500 ease-in-out transform bg-white border rounded-lg border-blueGray-300 hover:bg-black hover:text-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2"
+              className="inline-flex w-full px-4 py-3 font-semibold text-black transition duration-500 ease-in-out transform bg-white border rounded-lg border-blueGray-300 hover:bg-gray-400 hover:text-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2"
             >
               <div className="flex items-center justify-center">
                 <svg
@@ -64,22 +64,22 @@ const Login: VFC = () => {
                     <use xlinkHref="#a" overflow="visible"></use>
                   </clipPath>
                   <path
-                    clip-path="url(#b)"
+                    clipPath="url(#b)"
                     fill="#FBBC05"
                     d="M0 37V11l17 13z"
                   ></path>
                   <path
-                    clip-path="url(#b)"
+                    clipPath="url(#b)"
                     fill="#EA4335"
                     d="M0 11l17 13 7-6.1L48 14V0H0z"
                   ></path>
                   <path
-                    clip-path="url(#b)"
+                    clipPath="url(#b)"
                     fill="#34A853"
                     d="M0 37l30-23 7.9 1L48 0v48H0z"
                   ></path>
                   <path
-                    clip-path="url(#b)"
+                    clipPath="url(#b)"
                     fill="#4285F4"
                     d="M48 48L17 24l-4-3 35-10z"
                   ></path>
@@ -89,14 +89,14 @@ const Login: VFC = () => {
             </button>
             <button
               type="button"
-              className="inline-flex w-full px-4 py-3 font-semibold text-black transition duration-500 ease-in-out transform bg-white border rounded-lg border-blueGray-300 hover:bg-black hover:text-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 mt-5"
+              className="inline-flex w-full px-4 py-3 font-semibold text-black transition duration-500 ease-in-out transform bg-white border rounded-lg border-blueGray-300 hover:bg-gray-400 hover:text-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 mt-5"
             >
               <div className="flex items-center justify-center">
                 <svg
                   fill="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   className="w-5 h-5"
                   viewBox="0 0 24 24"
                 >

@@ -5,12 +5,12 @@ import { Link } from "react-router-dom";
 
 export const Header: VFC = () => {
   return (
-    <Popover className="relative bg-gray-200">
+    <Popover className="relative bg-secondary">
       <div className="mx-auto px-4 sm:px-6">
-        <div className="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
+        <div className="flex justify-between items-center border-gray-100 py-6 md:justify-start md:space-x-10 ">
           <div className="flex justify-start lg:w-0 lg:flex-1">
             <Link to="/">
-              <h1>Logo</h1>
+              <h1 className="text-3xl text-white font-bold">DeskTourApp</h1>
             </Link>
           </div>
 
@@ -43,16 +43,16 @@ export const Header: VFC = () => {
             </Link>
             <Link
               to="/sign-up"
-              className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+              className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-primaryButton hover:bg-gray-300"
             >
               新規登録
             </Link>
 
             <Link to="/users/profile/1" className="block relative">
               <img
-                alt="profile"
-                src="/images/person/1.jpg"
-                className="mx-auto object-cover rounded-full h-16 w-16 "
+                className="ml-8 object-cover rounded-full h-16 w-16"
+                src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80"
+                alt=""
               />
             </Link>
           </div>
