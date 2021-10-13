@@ -1,0 +1,39 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  id: Float!
+  name: String!
+  email: String!
+  password: String!
+  image: String!
+  roleId: Float!
+}
+
+type Post {
+  id: Float!
+  title: String!
+  description: String!
+}
+
+type Query {
+  users: [User!]!
+  posts: [Post!]!
+}
+
+type Mutation {
+  addNewUser(newUserData: NewUserInput!): User!
+  addNewPost(newPostData: NewPostInput!): Post!
+}
+
+input NewUserInput {
+  name: String!
+  email: String!
+  password: String!
+}
+
+input NewPostInput {
+  title: String!
+  description: String!
+}
