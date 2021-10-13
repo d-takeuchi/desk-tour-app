@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import PostCard from "../organisms/PostCard";
 
 const Home = () => {
@@ -11,36 +12,30 @@ const Home = () => {
             <h1 className="font-bold text-3xl sm:text-6xl text-white leading-tight mt-4">
               お気に入りのデスク環境を見つけてみませんか？
             </h1>
-            <a
-              href="/"
-              className="block bg-white hover:bg-gray-100 py-3 px-4 rounded-lg text-lg text-gray-800 font-bold uppercase mt-10"
+            <Link
+              to="/posts/create"
+              className="block bg-primaryButton hover:bg-gray-300 py-3 px-4 rounded-lg text-lg text-white font-bold uppercase mt-10"
             >
               あなたのデスク環境を投稿
-            </a>
+            </Link>
           </div>
         </div>
       </div>
 
       {/* 投稿の新着 */}
-      <section className="text-blueGray-900 ">
+      <section className="bg-primary">
         <div className="container items-center px-5 py-8 mx-auto lg:px-24">
           <div className="flex justify-between">
-            <h2 className="font-medium">新着</h2>
-            <button className="bg-gray-200 rounded-xl py-2 px-8">
+            <h2 className="font-medium text-white">新着</h2>
+            <button className="text-white bg-primaryButton rounded-xl py-2 px-8 hover:bg-gray-300">
               すべて見る
             </button>
           </div>
 
           <div className="flex flex-wrap mb-12 text-left">
-            <div className="w-full p-6 mx-auto lg:w-1/3">
-              <PostCard />
-            </div>
-            <div className="w-full p-6 mx-auto lg:w-1/3">
-              <PostCard />
-            </div>
-            <div className="w-full p-6 mx-auto lg:w-1/3">
-              <PostCard />
-            </div>
+            <PostCard />
+            <PostCard />
+            <PostCard />
           </div>
         </div>
       </section>
