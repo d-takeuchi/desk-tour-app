@@ -23,11 +23,17 @@ export class UsersService {
     return users;
   }
 
-  public async addUser(newUserData: NewUserInput): Promise<User> {
+  public async signUp(newUserData: NewUserInput): Promise<User> {
     const newTodo = this.userRepository.create(newUserData);
     await this.userRepository.save(newTodo).catch((err) => {
       new InternalServerErrorException();
     });
     return newTodo;
+  }
+
+  public async getUserByEmail(email: string): Promise<User> {
+    const user = await this.userRepository.findOne({ email });
+
+    return user;
   }
 }

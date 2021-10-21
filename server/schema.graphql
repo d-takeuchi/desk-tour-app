@@ -15,15 +15,17 @@ type Post {
   id: Float!
   title: String!
   description: String!
+  deskImage: String!
 }
 
 type Query {
   users: [User!]!
   posts: [Post!]!
+  getNewArrivalPosts: [Post!]!
 }
 
 type Mutation {
-  addNewUser(newUserData: NewUserInput!): User!
+  signUp(newUserData: NewUserInput!): User!
   addNewPost(newPostData: NewPostInput!): Post!
 }
 
@@ -36,4 +38,5 @@ input NewUserInput {
 input NewPostInput {
   title: String!
   description: String!
+  deskImage: String!
 }

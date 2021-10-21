@@ -1,6 +1,11 @@
 import { Field, ObjectType } from '@nestjs/graphql';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
+enum UserRole {
+  ADMIN = 1,
+  GENERAL = 2,
+}
+
 @Entity({ name: 'users' })
 @ObjectType()
 export class User {
@@ -20,11 +25,15 @@ export class User {
   @Field()
   password: string;
 
-  @Column('blob', { nullable: true })
+  @Column({ nullable: true })
   @Field()
   image: string;
 
-  @Column({ nullable: true })
+  @Column({
+    type: 'enum',
+    enum: UserRole,
+    default: UserRole.GENERAL,
+  })
   @Field()
-  roleId: number;
+  roleId: UserRole;
 }

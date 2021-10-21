@@ -14,7 +14,7 @@ export class PostsService {
     @InjectRepository(Post) private postRepository: Repository<Post>,
   ) {}
 
-  public async getAllPosts(): Promise<Post[]> {
+  public async getPosts(): Promise<Post[]> {
     const posts = await this.postRepository.find({});
     if (!posts) throw new NotFoundException();
 
@@ -24,8 +24,16 @@ export class PostsService {
   public async addPost(newPostData: NewPostInput): Promise<Post> {
     const newPost = this.postRepository.create(newPostData);
     await this.postRepository.save(newPost).catch((err) => {
+      console.log(err);
       new InternalServerErrorException();
     });
     return newPost;
+  }
+
+  public async getNewArrivalPosts(): Promise<Post[]> {
+    const posts = await this.postRepository.find({ take: 3 });
+    if (!posts) throw new NotFoundException();
+
+    return posts;
   }
 }

@@ -1,5 +1,5 @@
 import { Field, ObjectType } from '@nestjs/graphql';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { AfterLoad, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity({ name: 'posts' })
 @ObjectType()
@@ -15,4 +15,13 @@ export class Post {
   @Column()
   @Field()
   description: string;
+
+  @Column('mediumtext')
+  @Field()
+  deskImage: string;
+
+  // @AfterLoad()
+  // blobToString() {
+  //   this.deskImage = Buffer.from(this.deskImage).toString('base64');
+  // }
 }

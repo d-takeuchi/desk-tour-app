@@ -5,6 +5,7 @@ import { UsersModule } from './users/users.module';
 import { DatabaseModule } from './database/database.module';
 import { GraphQLModule } from '@nestjs/graphql';
 import { PostsModule } from './posts/posts.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -13,10 +14,11 @@ import { PostsModule } from './posts/posts.module';
     GraphQLModule.forRoot({
       playground: true,
       debug: true,
-      // 下記に設定したファイル名でスキーマファイルが書き出されます
+      // 下記に設定したファイル名でスキーマファイルが書き出される
       autoSchemaFile: 'schema.graphql',
     }),
     PostsModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

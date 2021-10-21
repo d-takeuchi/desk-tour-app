@@ -1,15 +1,19 @@
 import React, { memo, VFC } from "react";
 import { Link } from "react-router-dom";
 
-const PostCard: VFC = memo(() => {
+type Props = {
+  image: string;
+};
+
+const PostCard: VFC<Props> = memo(({ image }) => {
   return (
     <div className="w-full p-6 mx-auto lg:w-1/3">
       <div className="shadow-xl  rounded-xl bg-blueGray-50">
         <Link to="/posts/view/1">
           <img
             className="object-cover object-center w-full lg:h-48 md:h-36 rounded-t-xl"
-            src="https://dummyimage.com/720x400/F3F4F7/8693ac"
-            alt="blog"
+            src={image}
+            alt="deskImg"
           />
         </Link>
         <div className="flex justify-between p-4 lg:p-8 bg-white rounded-b-xl">
