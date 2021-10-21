@@ -22,13 +22,15 @@ services:
       dockerfile: ./db/Dockerfile
     restart: always
     hostname: db
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_USER: hoge
       MYSQL_PASSWORD: hoge
       MYSQL_DATABASE: deskApp
     volumes:
-      - "./db:/config"
+      - ./db:/config
+      - ./db/my.cnf:/etc/mysql/conf.d/my.cnf
     ports:
       - 3306:3306
     container_name: db

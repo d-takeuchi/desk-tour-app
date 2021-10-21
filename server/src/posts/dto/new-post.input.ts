@@ -7,4 +7,7 @@ export class NewPostInput {
 
   @Field()
   description: string;
+
+  @Field()
+  deskImage: string;
 }

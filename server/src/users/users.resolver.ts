@@ -16,10 +16,11 @@ export class UsersResolver {
   }
 
   @Mutation(() => User)
-  public async addNewUser(
+  public async signUp(
     @Args('newUserData') newUserData: NewUserInput,
   ): Promise<User> {
-    return await this.usersService.addUser(newUserData).catch((err) => {
+    return await this.usersService.signUp(newUserData).catch((err) => {
+      console.log(err);
       throw err;
     });
   }

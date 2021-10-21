@@ -1,8 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import PostCard from "../organisms/PostCard";
+import { useQuery } from "@apollo/react-hooks";
+import { NEW_ARRIVAL_POSTS } from "../../queries/queries";
 
 const Home = () => {
+  const { data } = useQuery(NEW_ARRIVAL_POSTS);
+  console.log(data);
   return (
     <>
       {/* メインビジュアル */}
@@ -33,9 +37,10 @@ const Home = () => {
           </div>
 
           <div className="flex flex-wrap mb-12 text-left">
-            <PostCard />
-            <PostCard />
-            <PostCard />
+            {data &&
+              data.getNewArrivalPosts.map((post: any) => (
+                <PostCard image={post.deskImage} />
+              ))}
           </div>
         </div>
       </section>
