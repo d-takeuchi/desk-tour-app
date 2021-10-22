@@ -1,0 +1,10 @@
+{
+  "type": "mysql",
+  "host": "db",
+  "port": 3306,
+  "username": "hoge",
+  "password": "hoge",
+  "database": "deskApp",
+  "entities": ["dist/**/entities/*{.ts,.js}"],
+  "synchronize": true
+}
