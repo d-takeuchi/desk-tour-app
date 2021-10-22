@@ -1,5 +1,12 @@
 import { Field, ObjectType } from '@nestjs/graphql';
-import { AfterLoad, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { User } from 'src/users/entities/user';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity({ name: 'posts' })
 @ObjectType()
@@ -20,8 +27,14 @@ export class Post {
   @Field()
   deskImage: string;
 
-  // @AfterLoad()
-  // blobToString() {
-  //   this.deskImage = Buffer.from(this.deskImage).toString('base64');
-  // }
+  @Column()
+  @Field()
+  userId: number;
+
+  @ManyToOne(() => User, (user) => user.posts)
+  @JoinColumn({ name: 'userId' })
+  user: User;
+
+  // @OneToMany(() => Likes, (likes) => likes.user)
+  // likes: Likes[];
 }

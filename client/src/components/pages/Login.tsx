@@ -4,6 +4,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { schema } from "../../validations/login";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
+import jwt from "jwt-decode";
+import { DecodedToken } from "../../types/types";
 
 const Login: VFC = () => {
   const history = useHistory();
@@ -23,14 +25,17 @@ const Login: VFC = () => {
 
   const onSubmit = (data: FormInputData) => {
     axios
-      .post(`http://localhost:3000/auth/login`, data)
+      .post<{ access_token: string }>(`http://localhost:3000/auth/login`, data)
       .then((res) => {
-        console.log(res.data);
+        const decodedToken: DecodedToken = jwt(res.data.access_token);
+        localStorage.setItem("app-auth", res.data.access_token);
+        localStorage.setItem("app-meta", JSON.stringify(decodedToken));
+        history.push("/");
       })
       .catch((err) => {
-        console.log(err);
+        //TODO ここは後でトーストでエラーメッセージを表示させるか、、
+        console.error(err);
       });
-    // history.push("/");
   };
 
   return (

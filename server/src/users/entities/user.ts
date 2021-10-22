@@ -1,5 +1,6 @@
 import { Field, ObjectType } from '@nestjs/graphql';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Post } from 'src/posts/entities/post';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 enum UserRole {
   ADMIN = 1,
@@ -36,4 +37,7 @@ export class User {
   })
   @Field()
   roleId: UserRole;
+
+  @OneToMany(() => Post, (post) => post.user)
+  posts: Post[];
 }

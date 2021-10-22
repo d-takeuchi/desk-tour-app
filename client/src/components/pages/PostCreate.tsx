@@ -1,23 +1,19 @@
 import React, { useState, VFC } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-import { CREATE_NEW_POST, NEW_ARRIVAL_POSTS } from "../../queries/queries";
 import { useMutation } from "@apollo/client";
 import Resizer from "react-image-file-resizer";
 
-const schema = yup
-  .object({
-    title: yup.string().max(50).required(),
-    description: yup.string().max(300).required(),
-  })
-  .required();
+import { CREATE_NEW_POST, NEW_ARRIVAL_POSTS } from "../../queries/queries";
+import { schema } from "../../validations/posts/create";
 
 const PostCreate: VFC = () => {
   const [createNewPost] = useMutation(CREATE_NEW_POST, {
     refetchQueries: [{ query: NEW_ARRIVAL_POSTS }],
     awaitRefetchQueries: true,
   });
+
+  const [deskImageUrl, setDeskImageUrl] = useState("");
 
   const {
     register,
@@ -30,6 +26,7 @@ const PostCreate: VFC = () => {
   type FormInputData = {
     title: string;
     description: string;
+    userId: number;
   };
 
   const onSubmit = (data: FormInputData) => {
@@ -38,11 +35,10 @@ const PostCreate: VFC = () => {
         title: data.title,
         description: data.description,
         deskImage: deskImageUrl,
+        userId: data.userId,
       },
     });
   };
-
-  const [deskImageUrl, setDeskImageUrl] = useState("");
 
   const resizeFile = (file: Blob) =>
     new Promise((resolve) => {
@@ -59,6 +55,7 @@ const PostCreate: VFC = () => {
         "base64"
       );
     });
+
   const processImage = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const imageFile = event.target.files?.[0];
 
@@ -90,8 +87,9 @@ const PostCreate: VFC = () => {
                       <div className="mt-1">
                         <input
                           {...register("title")}
+                          className="shadow-sm appearance-none border border-gray-300 rounded-md  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                           id="title"
-                          className="shadow-sm mt-1 block w-full sm:text-sm border border-gray-300 rounded-md py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                          type="text"
                         />
                         <span className="text-xs text-red-700">
                           {errors.title?.message}
@@ -177,9 +175,23 @@ const PostCreate: VFC = () => {
                         />
                         <label
                           htmlFor="option2"
-                          className="label-checked:bg-gray-300 px-4 py-2 rounded-lg border-solid border-4 border-light-blue-500 mx-10"
+                          className="label-checked:bg-gray-300 px-4 py-2 rounded-lg border-solid border-4 border-light-blue-500 ml-10"
                         >
                           #デザイナー
+                        </label>
+                      </div>
+                      <div>
+                        <input
+                          type="checkbox"
+                          name="option3"
+                          id="option3"
+                          className="hidden"
+                        />
+                        <label
+                          htmlFor="option3"
+                          className="label-checked:bg-gray-300 px-4 py-2 rounded-lg border-solid border-4 border-light-blue-500 ml-10"
+                        >
+                          #ゲーマー
                         </label>
                       </div>
                     </div>

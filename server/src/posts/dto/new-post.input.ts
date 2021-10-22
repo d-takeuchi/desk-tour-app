@@ -10,4 +10,7 @@ export class NewPostInput {
 
   @Field()
   deskImage: string;
+
+  @Field()
+  userId: string;
 }
