@@ -6,7 +6,6 @@ import { NEW_ARRIVAL_POSTS } from "../../queries/queries";
 
 const Home = () => {
   const { data } = useQuery(NEW_ARRIVAL_POSTS);
-  console.log(data);
   return (
     <>
       {/* メインビジュアル */}

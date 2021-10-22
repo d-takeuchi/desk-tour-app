@@ -1,5 +1,4 @@
 import { gql } from "@apollo/client";
-import { Post } from "../types";
 
 //新着3件の投稿取得
 export const NEW_ARRIVAL_POSTS = gql`
@@ -13,12 +12,18 @@ export const NEW_ARRIVAL_POSTS = gql`
 
 //新規投稿
 export const CREATE_NEW_POST = gql`
-  mutation ($title: String!, $description: String!, $deskImage: String!) {
+  mutation (
+    $title: String!
+    $description: String!
+    $deskImage: String!
+    $userId: String!
+  ) {
     addNewPost(
       newPostData: {
         title: $title
         description: $description
         deskImage: $deskImage
+        userId: $userId
       }
     ) {
       title
