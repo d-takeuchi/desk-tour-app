@@ -40,3 +40,13 @@ export const CREATE_NEW_USER = gql`
     }
   }
 `;
+
+//タグの取得
+export const TAGS = gql`
+  {
+    tags {
+      id
+      name
+    }
+  }
+`;

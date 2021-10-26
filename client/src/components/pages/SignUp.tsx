@@ -33,7 +33,7 @@ const SignUp: VFC = () => {
         password: data.password,
       },
     });
-    history.push("/");
+    history.push("/login");
   };
 
   return (

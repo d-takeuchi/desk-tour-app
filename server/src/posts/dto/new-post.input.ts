@@ -12,5 +12,5 @@ export class NewPostInput {
   deskImage: string;
 
   @Field()
-  userId: string;
+  userId: number;
 }

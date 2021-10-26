@@ -3,6 +3,7 @@ import { JwtService } from '@nestjs/jwt';
 import { User } from 'src/users/entities/user';
 import { UsersService } from 'src/users/users.service';
 import { jwtSecret } from './constants';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class AuthService {
@@ -17,13 +18,11 @@ export class AuthService {
     if (!user) {
       return null;
     }
-
-    const passwordIsValid = password === user.password;
+    const passwordIsValid = bcrypt.compareSync(password, user.password);
     return passwordIsValid ? user : null;
   }
 
   public login(user: User): { access_token: string } {
-    console.log(user);
     const payload = {
       email: user.email,
       sub: user.id,

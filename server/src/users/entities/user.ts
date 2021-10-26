@@ -1,6 +1,15 @@
 import { Field, ObjectType } from '@nestjs/graphql';
 import { Post } from 'src/posts/entities/post';
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  BeforeInsert,
+  BeforeUpdate,
+  Column,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+
+import * as bcrypt from 'bcrypt';
 
 enum UserRole {
   ADMIN = 1,
@@ -12,7 +21,7 @@ enum UserRole {
 export class User {
   @PrimaryGeneratedColumn()
   @Field()
-  id: number;
+  readonly id: number;
 
   @Column({ nullable: true })
   @Field()
@@ -40,4 +49,13 @@ export class User {
 
   @OneToMany(() => Post, (post) => post.user)
   posts: Post[];
+
+  //登録・更新が走るタイミングでパスワードを暗号化
+  @BeforeInsert()
+  @BeforeUpdate()
+  async hashPassword(): Promise<void> {
+    if (!!this.password) {
+      this.password = await bcrypt.hash(this.password, 10);
+    }
+  }
 }
