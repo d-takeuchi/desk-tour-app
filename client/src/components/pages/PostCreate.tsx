@@ -11,6 +11,7 @@ import {
 } from "../../queries/queries";
 import { schema } from "../../validations/posts/create";
 import PostCategoryTag from "../organisms/PostCategoryTag";
+import { useDecodedToken } from "../../hooks/useDecodedToken";
 
 const PostCreate: VFC = () => {
   const [createNewPost] = useMutation(CREATE_NEW_POST, {
@@ -20,31 +21,38 @@ const PostCreate: VFC = () => {
 
   const [deskImageUrl, setDeskImageUrl] = useState("");
 
+  type FormInputData = {
+    title: string;
+    imageFile: string;
+    description: string;
+    tags: number[];
+  };
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } = useForm<FormInputData>({
     resolver: yupResolver(schema),
+    defaultValues: {
+      title: "",
+      tags: [],
+      imageFile: "",
+      description: "",
+    },
   });
 
-  type FormInputData = {
-    title: string;
-    description: string;
-    userId: number;
-    // tags: number[];
-  };
-
+  const currentUser = useDecodedToken();
   const onSubmit = (data: FormInputData) => {
-    console.log(data);
-    // createNewPost({
-    //   variables: {
-    //     title: data.title,
-    //     description: data.description,
-    //     deskImage: deskImageUrl,
-    //     userId: data.userId,
-    //   },
-    // });
+    createNewPost({
+      variables: {
+        title: data.title,
+        description: data.description,
+        deskImage: deskImageUrl,
+        userId: currentUser?.sub,
+        // tags: data.tags,
+      },
+    });
   };
 
   const resizeFile = (file: Blob) =>
@@ -184,7 +192,7 @@ const PostCreate: VFC = () => {
                       </div>
                       <div className="mt-5">
                         <span className="text-xs text-red-700 ">
-                          {errors.tags?.message}
+                          {(errors.tags as any)?.message}
                         </span>
                       </div>
                     </div>

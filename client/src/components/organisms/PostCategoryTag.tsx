@@ -1,5 +1,4 @@
 import React, { VFC } from "react";
-import { FieldValue, UseFormRegister } from "react-hook-form";
 
 type Props = {
   tagId: number;
