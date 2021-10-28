@@ -1,10 +1,11 @@
 {
   "type": "mysql",
-  "host": "db",
+  "host": "localhost",
   "port": 3306,
   "username": "hoge",
   "password": "hoge",
   "database": "deskApp",
+  "migrations": ["src/migrations/*{.ts,.js}"],
   "entities": ["dist/**/entities/*{.ts,.js}"],
   "synchronize": true
 }

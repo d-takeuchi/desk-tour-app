@@ -41,7 +41,4 @@ export class Post {
   @ManyToMany(() => Tag)
   @JoinTable({ name: 'post_tags' })
   tags: Tag[];
-
-  // @OneToMany(() => Likes, (likes) => likes.user)
-  // likes: Likes[];
 }

@@ -13,4 +13,7 @@ export class NewPostInput {
 
   @Field()
   userId: number;
+
+  // @Field()
+  // tags: number[];
 }

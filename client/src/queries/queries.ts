@@ -16,7 +16,7 @@ export const CREATE_NEW_POST = gql`
     $title: String!
     $description: String!
     $deskImage: String!
-    $userId: String!
+    $userId: Float!
   ) {
     addNewPost(
       newPostData: {
